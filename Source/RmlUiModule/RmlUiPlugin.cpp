@@ -121,9 +121,9 @@ void RmlUiEditorPlugin::Initialize()
     auto project = Editor::Project;
     HashSet<ProjectInfo *> projects;
     project->GetAllProjects(projects);
-    for (auto e : projects)
+    for (auto i = projects.Begin(); i.IsNotEnd(); ++i)
     {
-        ProjectInfo *project = e.Item;
+        ProjectInfo *project = i->Item;
         if (project->Name == TEXT("Flax"))
             continue;
         LOG(Info, "Registering RML watcher: Source file changed: {0}", project->ProjectFolderPath / TEXT("Content"));
